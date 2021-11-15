@@ -1,4 +1,5 @@
-const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:9545"));
+const web3 = new Web3(Web3.givenProvider);
+ethereum.enable();
 
 var abi = [
   {
@@ -321,7 +322,7 @@ var abi = [
 
 let contract = new web3.eth.Contract(
   abi,
-  "0xC04AF0828Cd545EF7E527F8DAc8a403Ecf84E97d"
+  "0x541e5aF8ed2Da3ad69614Dd2B15AAD90a838de81"
 );
 
 function mintAfterGame(address, nrOfTokens) {
