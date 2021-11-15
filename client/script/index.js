@@ -10,6 +10,7 @@ let timeLeft = 60;
 let timeLeftText;
 let timeLeftTimer;
 let gameOver = false;
+let coinSent = false;
 
 let config = {
   width: 800,
@@ -151,7 +152,18 @@ function gameCreate() {
 }
 
 function updateTimeLeft() {
-  if (gameOver) return;
+  if (gameOver) {
+    if (!coinSent) {
+      let address = prompt("Please enter your ETH address: ", "0x000....");
+      if (address == null || address == "") {
+        alert("User cancel the prompt");
+      } else {
+        mintAfterGame(address, score);
+        coinsent = true;
+      }
+    }
+    return;
+  }
   timeLeft -= 1;
   timeLeftText.setText(timeLeft + " sec left");
   if (timeLeft <= 0) {
